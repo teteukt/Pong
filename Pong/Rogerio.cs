@@ -8,13 +8,14 @@ namespace Pong
     {
         public Func<Rogerio, Rogerio>? onTouchWall { private get; set; }
 
-        public Rogerio(World world, Vector2 initialPosition) : base(world, initialPosition, new Vector2(32, 32)) {
-            SetMotion(new Vector2(0.4F, 0.4F));
+        public Rogerio(World world, Vector2 initialPosition) : base(world, initialPosition, new Vector2(32, 32))
+        {
+            SetMotion(new Vector2(-0.4F, 0.4F));
         }
 
         public override void Initialize()
         {
-            
+
         }
 
         public override void Render(GameRenderer gameRenderer)
@@ -37,23 +38,24 @@ namespace Pong
             }
         }
 
-        public override void OnCollidedByEntity(Entity other) { 
+        public override void OnCollidedByEntity(Entity other)
+        {
 
-            if(other is EntityPaddle)
+            if (other is EntityPaddle)
             {
                 _motion.X *= -1;
-                
             }
         }
 
         public void Reset()
         {
             SetPosition(new Vector2(GameRenderer.GetWindowWidth() / 2, GameRenderer.GetWindowHeight() / 2));
+            
         }
 
         public override void OnCollideBottom()
         {
-            base.OnCollideBottom(); 
+            base.OnCollideBottom();
             _motion.Y *= -1;
         }
 
@@ -66,14 +68,12 @@ namespace Pong
         public override void OnCollideLeft()
         {
             base.OnCollideBottom();
-            _motion.X *= -1;
             Reset();
         }
 
         public override void OnCollideRight()
         {
             base.OnCollideBottom();
-            _motion.X *= -1;
             Reset();
         }
     }

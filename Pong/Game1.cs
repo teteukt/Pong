@@ -19,7 +19,7 @@ namespace Pong
             IsMouseVisible = true;
         }
 
-        
+
 
         protected override void Initialize()
         {
@@ -34,7 +34,7 @@ namespace Pong
             _world.Initialize();
         }
 
-        
+
 
         protected override void Update(GameTime gameTime)
         {

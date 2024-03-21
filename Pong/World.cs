@@ -70,7 +70,7 @@ namespace Pong
 
             foreach (Entity entity in entities)
             {
-                if (rectangle.Contains(entity.Bounds()))
+                if (rectangle.Intersects(entity.Bounds()))
                 {
                     collidedEntities.Add(entity);
                 }

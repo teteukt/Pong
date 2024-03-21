@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -17,7 +13,7 @@ namespace Pong
 
         public override void Initialize()
         {
-            
+
         }
 
         public override void Render(GameRenderer gameRenderer)
@@ -29,18 +25,20 @@ namespace Pong
 
         public override void Update(GameTime gameTime)
         {
-            if(controlledByPlayer)
+            if (controlledByPlayer)
             {
                 bool upPressed = Keyboard.GetState().IsKeyDown(Keys.W);
                 bool downPressed = Keyboard.GetState().IsKeyDown(Keys.S);
 
-                if(upPressed)
+                if (upPressed)
                 {
                     SetMotion(new Vector2(0, -1));
-                } else if(downPressed)
+                }
+                else if (downPressed)
                 {
                     SetMotion(new Vector2(0, 1));
-                } else
+                }
+                else
                 {
                     SetMotion(new Vector2(0, 0));
                 }

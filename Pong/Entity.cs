@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace Pong
@@ -16,7 +11,8 @@ namespace Pong
         public Vector2 _motion;
         public bool Dead { get; private set; }
 
-        public Entity(World world, Vector2 initialPosition, Vector2 size) { 
+        public Entity(World world, Vector2 initialPosition, Vector2 size)
+        {
             _world = world;
             _position = initialPosition;
             _size = size;
@@ -28,8 +24,8 @@ namespace Pong
             _position = position;
         }
 
-        public Vector2 Position { get { return _position;} }
-        public Vector2 Size { get { return _size;} }
+        public Vector2 Position { get { return _position; } }
+        public Vector2 Size { get { return _size; } }
 
         public void SetMotion(Vector2 motion)
         {
@@ -46,28 +42,28 @@ namespace Pong
             _position.X += _motion.X * (float)gameTime.ElapsedGameTime.TotalMilliseconds;
             _position.Y += _motion.Y * (float)gameTime.ElapsedGameTime.TotalMilliseconds;
 
-            if(_position.Y < 0)
+            if (_position.Y < 0)
             {
                 OnCollideTop();
                 _position.Y = 0;
             }
 
-            if(_position.Y + _size.Y > GameRenderer.GetWindowHeight())
+            if (_position.Y + _size.Y > GameRenderer.GetWindowHeight())
             {
                 OnCollideBottom();
                 _position.Y = GameRenderer.GetWindowHeight() - _size.Y;
             }
 
-            if(_position.X < 0)
+            if (_position.X < 0)
             {
-                OnCollideLeft();
                 _position.X = 0;
+                OnCollideLeft();
             }
-            
-            if(_position.X + _size.X > GameRenderer.GetWindowWidth())
+
+            if (_position.X + _size.X > GameRenderer.GetWindowWidth())
             {
-                OnCollideRight();
                 _position.X = GameRenderer.GetWindowWidth() - _size.X;
+                OnCollideRight();
             }
 
             Update(gameTime);
