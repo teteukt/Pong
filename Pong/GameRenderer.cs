@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Pong
 {
-    class GameRenderer
+    public class GameRenderer
     {
         private Game _game;
         private static GraphicsDeviceManager _graphics;

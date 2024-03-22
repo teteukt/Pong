@@ -3,17 +3,19 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Pong
 {
-    abstract class Entity
+    public abstract class Entity
     {
-        private World _world;
+        public World World { get; private set; }
         private Vector2 _position;
-        private Vector2 _size;
+        public Vector2 _size { get; private set; }
         public Vector2 _motion;
         public bool Dead { get; private set; }
+        public Vector2 Position { get { return _position; } }
+        public Vector2 Size { get { return _size; } }
 
         public Entity(World world, Vector2 initialPosition, Vector2 size)
         {
-            _world = world;
+            World = world;
             _position = initialPosition;
             _size = size;
             _motion = new Vector2();
@@ -23,9 +25,6 @@ namespace Pong
         {
             _position = position;
         }
-
-        public Vector2 Position { get { return _position; } }
-        public Vector2 Size { get { return _size; } }
 
         public void SetMotion(Vector2 motion)
         {
@@ -69,15 +68,15 @@ namespace Pong
             Update(gameTime);
         }
 
-        public virtual void OnCollideTop() { }
-        public virtual void OnCollideBottom() { }
-        public virtual void OnCollideLeft() { }
-        public virtual void OnCollideRight() { }
 
         public Rectangle Bounds()
         {
             return new Rectangle((int)_position.X, (int)_position.Y, (int)_size.X, (int)_size.Y);
         }
+        public virtual void OnCollideTop() { }
+        public virtual void OnCollideBottom() { }
+        public virtual void OnCollideLeft() { }
+        public virtual void OnCollideRight() { }
 
         public abstract void Initialize();
         public abstract void Update(GameTime gameTime);

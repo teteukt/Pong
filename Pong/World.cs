@@ -7,9 +7,11 @@ using Microsoft.Xna.Framework;
 
 namespace Pong
 {
-    class World
+    public class World
     {
+        public Rogerio Rogerio { get; private set; }
         private List<Entity> entities = new();
+
 
         public void Initialize()
         {
@@ -20,19 +22,21 @@ namespace Pong
             entities.Add(playerPaddle);
             entities.Add(opponentPaddle);
 
-            Rogerio rogerio = new(this, new Vector2(GameRenderer.GetWindowWidth() / 2, GameRenderer.GetWindowHeight() / 2));
-            rogerio.onTouchWall = delegate (Rogerio rogerio)
+            Rogerio = new(this, new Vector2(GameRenderer.GetWindowWidth() / 2, GameRenderer.GetWindowHeight() / 2));
+            Rogerio.onTouchWall = delegate (Rogerio rogerio)
             {
                 OnRogerioTouchWall(rogerio);
                 return rogerio;
             };
-            entities.Add(rogerio);
+            entities.Add(Rogerio);
+
         }
 
         private void OnRogerioTouchWall(Rogerio rogerio)
         {
 
         }
+
 
         public void UpdateAllEntities(GameTime gameTime)
         {

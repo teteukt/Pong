@@ -19,12 +19,9 @@ namespace Pong
             IsMouseVisible = true;
         }
 
-
-
         protected override void Initialize()
         {
             _gameRenderer.Initialize();
-
             base.Initialize();
         }
 
@@ -35,11 +32,12 @@ namespace Pong
         }
 
 
-
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+            if (Keyboard.GetState().IsKeyDown(Keys.Escape) || Keyboard.GetState().IsKeyDown(Keys.Space))
+            {
                 Exit();
+            }
 
             _world.UpdateAllEntities(gameTime);
 
