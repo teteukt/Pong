@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework;
 #nullable enable
 namespace Pong
 {
-    class Rogerio : Entity
+    public class Rogerio : Entity
     {
         public Func<Rogerio, Rogerio>? onTouchWall { private get; set; }
 

@@ -1,15 +1,17 @@
 ﻿
+using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
 namespace Pong
 {
-    class EntityPaddle : Entity
+    public class EntityPaddle : Entity
     {
         public EntityPaddle(World world, Vector2 initialPosition = new Vector2()) : base(world, initialPosition, new Vector2(10, 100)) { }
 
         public bool controlledByPlayer { get; set; }
+
 
         public override void Initialize()
         {
@@ -22,6 +24,7 @@ namespace Pong
             Vector2 size = Size;
             gameRenderer.DrawRect(position.X, position.Y, size.X, size.Y, Color.White);
         }
+
 
         public override void Update(GameTime gameTime)
         {
@@ -43,6 +46,20 @@ namespace Pong
                     SetMotion(new Vector2(0, 0));
                 }
             }
+            else
+            {
+                float positon = 0;
+                positon += World.Rogerio.Position.Y;
+                if(positon + _size.Y > GameRenderer.GetWindowHeight()){
+                    OnCollideBottom();
+                    positon = GameRenderer.GetWindowHeight() - _size.Y;
+                }
+
+                SetPosition(new Vector2(GameRenderer.GetWindowWidth() - 10, positon));
+            }
         }
+
+
+
     }
 }
